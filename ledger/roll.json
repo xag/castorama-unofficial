@@ -1,0 +1,22 @@
+[
+  {
+    "path": "the-cutting-service-is-what-its-page-says",
+    "kind": "decision",
+    "digest": "49bd7d9aa789"
+  },
+  {
+    "path": "the-cutting-service-is-what-its-page-says/assume-a-panel-saws-rules",
+    "kind": "alternative",
+    "digest": "50b27b105d5a"
+  },
+  {
+    "path": "the-range-is-read-from-the-public-sitemap",
+    "kind": "decision",
+    "digest": "a697c69d924b"
+  },
+  {
+    "path": "the-range-is-read-from-the-public-sitemap/the-product-pages",
+    "kind": "alternative",
+    "digest": "5bce00246979"
+  }
+]
