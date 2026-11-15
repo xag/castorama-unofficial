@@ -20,6 +20,7 @@ from functools import lru_cache
 from pathlib import Path
 
 from quern.tree import Node
+from furniture_design.knowledge import with_authority
 from wood_panels import shops
 
 HERE = Path(__file__).parent
@@ -59,10 +60,16 @@ def cutting_service() -> Node:
                 links={"per": [f"sources/{SERVICE}/what-it-cuts"], "refuses": refuses})
 
 
+# Who stands behind each source (furniture-design's AUTHORITIES).
+AUTHORITY = {
+    "castorama-cutting-service-page": "maker",
+}
+
+
 def knowledge() -> list[Node]:
     """The branches to merge beside furniture-design's and wood-panels's: the sources, the materials and the cutting service."""
     out = shops.knowledge(PREFIX, SHOP, SOURCE, "Castorama France, product sitemap (https://www.castorama.fr/fstrz/sm/sitemap-index.xml)",
                           "https://www.castorama.fr/fstrz/sm/sitemap-index.xml", "2026-11-14", rows())
-    out[0].children.append(service_page())
+    out[0].children = with_authority(out[0].children + [service_page()], AUTHORITY)
     out.append(Node(id="tools", kind="", children=[cutting_service()]))
     return out
